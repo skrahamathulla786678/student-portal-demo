@@ -6,8 +6,8 @@ Welcome to the Demo Portal!
 
 [Login Section]
 ----------------
-Username: ____________
-Password: ____________
+Username:Shek Rahamthulla
+Password: 123
 [Login Button]
 
 [Navigation Menu]
@@ -40,4 +40,6 @@ Quick Stats:
 
 ----------------------------------------
          END OF DEMO PORTAL
+
 ----------------------------------------
+
