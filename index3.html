@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Railway Ticket Booking</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: #fff;
+            padding: 2em;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 500px;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 1em;
+        }
+        label {
+            display: block;
+            margin-bottom: 0.5em;
+            color: #555;
+        }
+        input[type="text"],
+        input[type="number"],
+        input[type="date"] {
+            width: 100%;
+            padding: 0.8em;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            width: 100%;
+            padding: 1em;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #confirmation {
+            margin-top: 2em;
+            padding: 1em;
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            border-radius: 4px;
+            text-align: center;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Book Your Train Ticket</h2>
+        <form id="bookingForm">
+            <div class="form-group">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" required>
+            </div>
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input type="number" id="age" required>
+            </div>
+            <div class="form-group">
+                <label for="from">From:</label>
+                <input type="text" id="from" required>
+            </div>
+            <div class="form-group">
+                <label for="destination">To:</label>
+                <input type="text" id="destination" required>
+            </div>
+            <div class="form-group">
+                <label for="date">Date of Journey:</label>
+                <input type="date" id="date" required>
+            </div>
+            <button type="submit">Book Ticket</button>
+        </form>
+        <div id="confirmation" class="hidden">
+            <h3>Booking Confirmed!</h3>
+            <p id="details"></p>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const bookingForm = document.getElementById('bookingForm');
+            const confirmationDiv = document.getElementById('confirmation');
+            const detailsParagraph = document.getElementById('details');
+
+            bookingForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+
+                // Get values from the form
+                const name = document.getElementById('name').value;
+                const age = document.getElementById('age').value;
+                const from = document.getElementById('from').value;
+                const destination = document.getElementById('destination').value;
+                const date = document.getElementById('date').value;
+
+                // Create a passenger object
+                const passenger = {
+                    name: name,
+                    age: age,
+                    from: from,
+                    destination: destination,
+                    date: date
+                };
+
+                // Log the passenger details to the console
+                console.log('Booking details submitted:');
+                console.log('---------------------------');
+                console.log('Passenger Name:', passenger.name);
+                console.log('Age:', passenger.age);
+                console.log('From:', passenger.from);
+                console.log('To:', passenger.destination);
+                console.log('Date of Journey:', passenger.date);
+                console.log('---------------------------');
+
+                // Display confirmation on the page
+                detailsParagraph.innerHTML = `
+                    <strong>Name:</strong> ${passenger.name}<br>
+                    <strong>Age:</strong> ${passenger.age}<br>
+                    <strong>From:</strong> ${passenger.from}<br>
+                    <strong>To:</strong> ${passenger.destination}<br>
+                    <strong>Date:</strong> ${passenger.date}
+                `;
+                confirmationDiv.classList.remove('hidden');
+
+                // Optional: Clear the form fields after submission
+                bookingForm.reset();
+            });
+        });
+    </script>
+</body>
+</html>
